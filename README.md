@@ -1,5 +1,6 @@
-# omorianko package
+# atom-omorianko package
 
-A short description of your package.
+atom-omorianko for Atom package.
+Displays [Omori Anko](http://omorianko.com/) images in the background.
 
-![A screenshot of your package](https://f.cloud.github.com/assets/69169/2290250/c35d867a-a017-11e3-86be-cd7c5bf3ff9b.gif)
+![A screenshot](https://raw.githubusercontent.com/mknkisk/atom-omorianko/master/screenshots/omorianko.png)

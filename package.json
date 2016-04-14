@@ -1,14 +1,11 @@
 {
-  "name": "omorianko",
+  "name": "atom-omorianko",
   "main": "./lib/omorianko",
-  "version": "0.0.0",
-  "description": "A short description of your package",
+  "version": "0.1.0",
+  "description": "Displays Omori Anko images in the background.",
   "keywords": [
   ],
-  "activationCommands": {
-    "atom-workspace": "omorianko:toggle"
-  },
-  "repository": "https://github.com/atom/omorianko",
+  "repository": "https://github.com/mknkisk/atom-omorianko",
   "license": "MIT",
   "engines": {
     "atom": ">=1.0.0 <2.0.0"

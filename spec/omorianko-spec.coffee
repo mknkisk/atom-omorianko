@@ -10,53 +10,31 @@ describe "Omorianko", ->
 
   beforeEach ->
     workspaceElement = atom.views.getView(atom.workspace)
-    activationPromise = atom.packages.activatePackage('omorianko')
+    activationPromise = atom.packages.activatePackage('atom-omorianko')
+
+    waitsForPromise ->
+      activationPromise
+    waitsForPromise ->
+      atom.workspace.open("README.md")
+
+  describe "when the omorianko activated", ->
+    it "add 'omorianko' class to workspace", ->
+      expect(workspaceElement.classList.contains('omorianko')).toEqual(true)
 
   describe "when the omorianko:toggle event is triggered", ->
-    it "hides and shows the modal panel", ->
-      # Before the activation event the view is not on the DOM, and no panel
-      # has been created
-      expect(workspaceElement.querySelector('.omorianko')).not.toExist()
-
-      # This is an activation event, triggering it will cause the package to be
-      # activated.
-      atom.commands.dispatch workspaceElement, 'omorianko:toggle'
-
-      waitsForPromise ->
-        activationPromise
-
+    it "toggle omorianko off class to workspace", ->
+      waitsFor ->
+        textEditorView = atom.views.getView(atom.workspace.getTextEditors()[0])
+        atom.commands.dispatch textEditorView, 'atom-omorianko:toggle'
       runs ->
-        expect(workspaceElement.querySelector('.omorianko')).toExist()
+        expect(workspaceElement.classList.contains('omorianko')).toEqual(false)
 
-        omoriankoElement = workspaceElement.querySelector('.omorianko')
-        expect(omoriankoElement).toExist()
-
-        omoriankoPanel = atom.workspace.panelForItem(omoriankoElement)
-        expect(omoriankoPanel.isVisible()).toBe true
-        atom.commands.dispatch workspaceElement, 'omorianko:toggle'
-        expect(omoriankoPanel.isVisible()).toBe false
-
-    it "hides and shows the view", ->
-      # This test shows you an integration test testing at the view level.
-
-      # Attaching the workspaceElement to the DOM is required to allow the
-      # `toBeVisible()` matchers to work. Anything testing visibility or focus
-      # requires that the workspaceElement is on the DOM. Tests that attach the
-      # workspaceElement to the DOM are generally slower than those off DOM.
-      jasmine.attachToDOM(workspaceElement)
-
-      expect(workspaceElement.querySelector('.omorianko')).not.toExist()
-
-      # This is an activation event, triggering it causes the package to be
-      # activated.
-      atom.commands.dispatch workspaceElement, 'omorianko:toggle'
-
-      waitsForPromise ->
-        activationPromise
-
+    it "toggle omorianko off class to workspace", ->
+      waitsFor ->
+        textEditorView = atom.views.getView(atom.workspace.getTextEditors()[0])
+        atom.commands.dispatch textEditorView, 'atom-omorianko:toggle'
+      waitsFor ->
+        textEditorView = atom.views.getView(atom.workspace.getTextEditors()[0])
+        atom.commands.dispatch textEditorView, 'atom-omorianko:toggle'
       runs ->
-        # Now we can test for view visibility
-        omoriankoElement = workspaceElement.querySelector('.omorianko')
-        expect(omoriankoElement).toBeVisible()
-        atom.commands.dispatch workspaceElement, 'omorianko:toggle'
-        expect(omoriankoElement).not.toBeVisible()
+        expect(workspaceElement.classList.contains('omorianko')).toEqual(true)

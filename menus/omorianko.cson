@@ -3,18 +3,18 @@
   'atom-text-editor': [
     {
       'label': 'Toggle omorianko'
-      'command': 'omorianko:toggle'
+      'command': 'atom-omorianko:toggle'
     }
   ]
 'menu': [
   {
     'label': 'Packages'
     'submenu': [
-      'label': 'omorianko'
+      'label': 'atom-omorianko'
       'submenu': [
         {
           'label': 'Toggle'
-          'command': 'omorianko:toggle'
+          'command': 'atom-omorianko:toggle'
         }
       ]
     ]
